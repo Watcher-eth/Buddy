@@ -89,10 +89,10 @@ const AnimatedSmileyFace = () => {
 
   // Canvas dimensions
   const canvasWidth = screenWidth;
-  const canvasHeight = screenHeight * 0.53;
+  const canvasHeight = screenHeight * 0.3;
   
   // Smiley face dimensions
-  const smileyRadius = Math.min(canvasWidth, canvasHeight) * 0.25;
+  const smileyRadius = Math.min(canvasWidth, canvasHeight +  screenHeight * 0.26) * 0.25;
   const centerX = canvasWidth / 2;
   const centerY = canvasHeight / 2;
   
@@ -107,7 +107,10 @@ const AnimatedSmileyFace = () => {
   const mouthY = centerY + smileyRadius * 0.15;
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white', }}>
+    <View style={{   width: canvasWidth,
+        height: canvasHeight,
+        backgroundColor: 'transparent',
+        alignSelf: 'center', }}>
       <Canvas style={{ width: canvasWidth, height: canvasHeight }}>
         {/* Animated Background Gradient - Circular, translucent, and centered beneath smiley */}
         <Circle 
@@ -117,7 +120,7 @@ const AnimatedSmileyFace = () => {
         >
           <RadialGradient
             c={vec(centerX, centerY)}
-            r={smileyRadius * 3}
+            r={smileyRadius * 3.3}
             colors={gradientColors}
             positions={[0, 0.4, 0.7, 1]}
           />

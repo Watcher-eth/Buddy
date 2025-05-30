@@ -4,9 +4,9 @@ export type Voice = 'male' | 'female'
 
 type SettingsState = {
   voice: Voice
-  genZMode: boolean
+  genzMode: boolean
   subtitles: boolean
-  guidedSession: boolean
+  guided: boolean
   /* ───── actions ───── */
   setVoice: (v: Voice) => void
   toggleGenZ: () => void
@@ -14,15 +14,15 @@ type SettingsState = {
   toggleGuided: () => void
 }
 
-export const useSettings = create<SettingsState>()((set) => ({
+export const useSessionSettings = create<SettingsState>()((set) => ({
   /* defaults */
   voice: 'female',
-  genZMode: false,
+  genzMode: false,
   subtitles: false,
-  guidedSession: true,
+  guided: true,
   /* actions */
   setVoice: (voice) => set({ voice }),
-  toggleGenZ:     () => set((s) => ({ genZMode:      !s.genZMode      })),
+  toggleGenZ:     () => set((s) => ({ genzMode:      !s.genzMode      })),
   toggleSubtitles:() => set((s) => ({ subtitles:     !s.subtitles     })),
-  toggleGuided:   () => set((s) => ({ guidedSession: !s.guidedSession })),
+  toggleGuided:   () => set((s) => ({ guided: !s.guided })),
 }))

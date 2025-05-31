@@ -9,7 +9,7 @@ import Animated, { SlideInRight, SlideOutLeft, Layout } from 'react-native-reani
 import { StepScreen } from '../components/onboarding/OnboardingStep';
 import { CustomStep13, CustomStep14, CustomStepEight, StepFourCustom } from '../components/onboarding/ExtraSteps'
 import SignIn from '../components/onboarding/SignIn'
-import { FreeTrial, FreeTrialNotif } from '../components/onboarding/SubscriptionSteps'
+import { FreeTrial, FreeTrialNotif, SignUp } from '../components/onboarding/SubscriptionSteps'
 
 // Your two custom steps:
 
@@ -206,6 +206,10 @@ export default function Onboarding() {
     ),
     () => (
       <FreeTrialNotif onContinue={() => setStep(17)}/>
+    ),
+
+    () => (
+      <SignUp/>
     ),
 
 

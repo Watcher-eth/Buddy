@@ -1,74 +1,71 @@
 // app/_layout.tsx
-import 'react-native-gesture-handler'
-import React, { useEffect } from 'react'
-import { Slot, Stack } from 'expo-router'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
-import { RootSiblingParent } from 'react-native-root-siblings'
-import { useFonts } from 'expo-font'
-import * as SplashScreen from 'expo-splash-screen'
+import 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import { Stack } from 'expo-router';
+import { SafeAreaProvider }   from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { RootSiblingParent } from 'react-native-root-siblings';
+import * as SplashScreen      from 'expo-splash-screen';
+import { useFonts }          from 'expo-font';
+import { useAuthStore } from '../lib/stores/AuthStore'
 
-SplashScreen.preventAutoHideAsync()
+
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  // 1) Load custom fonts
   const [fontsLoaded, fontError] = useFonts({
-    'SFPro': require('../assets/fonts/SFProRounded-Regular.ttf'),
+    SFPro:          require('../assets/fonts/SFProRounded-Regular.ttf'),
     'SFPro-Medium': require('../assets/fonts/SFProRounded-Medium.ttf'),
-    'SFPro-Bold': require('../assets/fonts/SFProRounded-Bold.ttf'),
-  })
+    'SFPro-Bold':   require('../assets/fonts/SFProRounded-Bold.ttf'),
+  });
 
+  // 2) Pull primitives from your Zustand store
+  const token     = useAuthStore((s) => s.token);
+
+  console.log("token", token, !token, !!token);
+  // 3) Hide the splash only once fonts & auth are ready
   useEffect(() => {
-    if (fontError) {
-      throw fontError
-    }
+    if (fontError) throw fontError;
     if (fontsLoaded) {
-      SplashScreen.hideAsync()
+      SplashScreen.hideAsync();
     }
-  }, [fontsLoaded, fontError])
+  }, [fontsLoaded, fontError]);
 
-  if (!fontsLoaded) {
-    // keep the splash screen up until fonts load
-    return null
-  }
 
   return (
-    <SafeAreaProvider style={{ }}>
+    <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <BottomSheetModalProvider>
           <RootSiblingParent>
             <Stack
-            
-            screenOptions={{
-              headerShown: false,
-              gestureEnabled: true,
-              gestureDirection: 'horizontal',
-            }}
+              screenOptions={{
+                headerShown:      false,
+              }}
             >
-              {/* index → HomeScreen */}
-              <Stack.Screen name="index" />
+              {/** 
+        1) If token exists, render the entire `(app)` group 
+        which lives in `app/(app)/_layout.tsx`. 
+      **/}
+      <Stack.Protected guard={!!token}>
+        <Stack.Screen name="(app)" />
+      </Stack.Protected>
 
-              {/* /reports → Reports list */}
-              <Stack.Screen name="reports" options={{
-                headerShown: false,
-                animation: 'slide_from_left',    // force any push to come from left
-                gestureEnabled: true,
-                gestureDirection: 'horizontal',
-              }}/>
-
-              {/* /reports/[id] → Report detail */}
-              <Stack.Screen
-                name="[id]"
-                options={{
-                  // optionally override header for detail
-                  headerShown: false,
-                  headerTitle: 'Report Detail',
-                }}
-              />
+      {/** 
+        2) If no token, render the onboarding screen 
+        which lives at `app/onboarding.tsx`.
+      **/}
+      <Stack.Protected guard={!token}>
+        <Stack.Screen 
+          name="onboarding" 
+          options={{ presentation: 'modal' }} 
+        />
+      </Stack.Protected>
             </Stack>
           </RootSiblingParent>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
-  )
+  );
 }

@@ -2,15 +2,15 @@
 import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import * as DropdownMenu from 'zeego/dropdown-menu'
-import { useSettings } from '../../lib/stores/SessionSettingsStore'
+import { useSessionSettings } from '../../lib/stores/SessionSettingsStore'
 import { AnimatedPressable } from './AnimatedPressable'
 import { Sliders } from 'lucide-react-native'
 
 export default function SettingsDropdown() {
   const {
-    voice, genZMode, subtitles, guidedSession,
+    voice, genzMode, subtitles, guided,
     setVoice, toggleGenZ, toggleSubtitles, toggleGuided,
-  } = useSettings()
+  } = useSessionSettings()
 
   return (
           <DropdownMenu.Root>
@@ -56,7 +56,7 @@ export default function SettingsDropdown() {
                      {/* Toggles -------------------------------------------------------- */}
                      <DropdownMenu.CheckboxItem
                        key="genz"
-                       value={genZMode ? 'on' : 'off'}
+                       value={genzMode ? 'on' : 'off'}
                        onValueChange={toggleGenZ}
                      >
                        <DropdownMenu.ItemTitle>Gen-Z mode</DropdownMenu.ItemTitle>
@@ -74,7 +74,7 @@ export default function SettingsDropdown() {
                
                      <DropdownMenu.CheckboxItem
                        key="guided"
-                       value={guidedSession ? 'on' : 'off'}
+                       value={guided ? 'on' : 'off'}
                        onValueChange={toggleGuided}
                      >
                        <DropdownMenu.ItemTitle>Guided session</DropdownMenu.ItemTitle>

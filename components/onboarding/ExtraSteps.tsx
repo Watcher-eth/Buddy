@@ -11,15 +11,18 @@ interface StepFourProps {
   step: number;
   totalSteps: number;
   onContinue: () => void;
+  continueColor?: string
 }
 
 export const StepFourCustom: React.FC<StepFourProps> = ({
   step,
   totalSteps,
   onContinue,
+  continueColor,
 }) => {
   return (
     <StepLayout
+      continueColor={continueColor}
       title="Buddy is completely personalized to YOU"
       subtitle="All your Data is military grade encrypted 100% confidential. "
       step={step}

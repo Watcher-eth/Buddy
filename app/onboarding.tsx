@@ -1,83 +1,94 @@
 // src/components/Onboarding.tsx
-import React, { JSX, useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { SlideInRight, SlideOutLeft, Layout } from 'react-native-reanimated';
 
-// Public “Sign In” screen (step 1)
-
-// The generic multiple‐choice step layout
+import SignIn from '../components/onboarding/SignIn';
 import { StepScreen } from '../components/onboarding/OnboardingStep';
-import { CustomStep13, CustomStep14, CustomStepEight, StepFourCustom } from '../components/onboarding/ExtraSteps'
-import SignIn from '../components/onboarding/SignIn'
-import { FreeTrial, FreeTrialNotif, SignUp } from '../components/onboarding/SubscriptionSteps'
+import { StepFourCustom, CustomStepEight, CustomStep13, CustomStep14 } from '../components/onboarding/ExtraSteps';
+import { FreeTrial, FreeTrialNotif, SignUp } from '../components/onboarding/SubscriptionSteps';
+import { useOnboardingStore } from '../lib/stores/OnboardingStore'
 
-// Your two custom steps:
 
 export default function Onboarding() {
   const [step, setStep] = useState(1);
-  const [selected, setSelected] = useState<string | null>(null);
-
-  // NOTE: adjust this if you end up with more or fewer than 13 steps.
   const totalSteps = 13;
 
-  //
-  // 1) Build a “screens” array of functions, one for each step (1‐based).
-  //    screens[0] is step 1, screens[1] is step 2, etc.
-  //
+  const gender = useOnboardingStore((s) => s.gender);
+  const setGender = useOnboardingStore((s) => s.setGender);
+
+  const age = useOnboardingStore((s) => s.age);
+  const setAge = useOnboardingStore((s) => s.setAge);
+
+  const relationshipStatus = useOnboardingStore((s) => s.relationshipStatus);
+  const setRelationshipStatus = useOnboardingStore((s) => s.setRelationshipStatus);
+
+  const childhood = useOnboardingStore((s) => s.childhood);
+  const setChildhood = useOnboardingStore((s) => s.setChildhood);
+
+  const parents = useOnboardingStore((s) => s.parents);
+  const setParents = useOnboardingStore((s) => s.setParents);
+
+  const everHadTherapy = useOnboardingStore((s) => s.everHadTherapy);
+  const setEverHadTherapy = useOnboardingStore((s) => s.setEverHadTherapy);
+
+  const mentalHealth = useOnboardingStore((s) => s.mentalHealth);
+  const setMentalHealth = useOnboardingStore((s) => s.setMentalHealth);
+
+  const pressingIssues = useOnboardingStore((s) => s.pressingIssues);
+  const setPressingIssues = useOnboardingStore((s) => s.setPressingIssues);
+
+  const goal = useOnboardingStore((s) => s.goal);
+  const setGoal = useOnboardingStore((s) => s.setGoal);
+
   const screens: Array<() => JSX.Element> = [
-    // STEP 1 (index 0): Sign-In
     () => <SignIn step={step} setStep={setStep} />,
 
-    // STEP 2 (index 1): Choose your Gender
     () => (
       <StepScreen
         title="Choose your Gender"
         subtitle="This will personalize your therapy sessions"
         options={['Male', 'Female', 'Other']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={gender}
+        onSelect={setGender}
         onContinue={() => setStep(3)}
         gradientColors={['#FD7BEF', '#F9452C']}
-        step={2}
         continueColor="#FB5D83"
+        step={2}
         totalSteps={totalSteps}
       />
     ),
 
-    // STEP 3 (index 2): Select your Age
     () => (
       <StepScreen
         title="Select your Age"
         subtitle="This will personalize tone and language"
         options={['<18', '18-25', '25-35', '35-45', '45+']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={age}
+        onSelect={setAge}
         onContinue={() => setStep(4)}
         gradientColors={['#FFB301', '#EE5623']}
-        step={3}
         continueColor="#F37019"
+        step={3}
         totalSteps={totalSteps}
       />
     ),
 
-    // STEP 4 (index 3): Relationship Status
-    // (Your generic StepScreen)
     () => (
       <StepScreen
         title="Relationship Status"
         subtitle="Customize your session context"
         options={['Single', 'In a relationship', 'Engaged', 'Married', "It's complicated"]}
-        selected={selected}
-        onSelect={setSelected}
+        selected={relationshipStatus}
+        onSelect={setRelationshipStatus}
         onContinue={() => setStep(5)}
         gradientColors={['#00E13E', '#003E75']}
-        step={4}
         continueColor="#01845E"
+        step={4}
         totalSteps={totalSteps}
       />
     ),
 
-    // STEP 5 (index 4): Your extra custom step (StepFourCustom)
     () => (
       <StepFourCustom
         step={5}
@@ -87,55 +98,51 @@ export default function Onboarding() {
       />
     ),
 
-    // STEP 6 (index 5): “How was your Childhood”
     () => (
       <StepScreen
         title="How was your Childhood"
         subtitle="This will be used to personalize your therapy"
         options={['Amazing', 'Mid', 'Traumatic', 'Other']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={childhood}
+        onSelect={setChildhood}
         onContinue={() => setStep(7)}
         gradientColors={['#FB5D83', '#FF7700']}
+        continueColor="#47A9FF"
         step={6}
         totalSteps={totalSteps}
-        continueColor="#47A9FF"
       />
     ),
 
-    // STEP 7 (index 6): “How were your Parents”
     () => (
       <StepScreen
         title="How were your Parents"
         subtitle="This will be used to personalize your therapy style"
         options={['Liberal', 'Balanced', 'Conservative', 'Strict', 'Other']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={parents}
+        onSelect={setParents}
         onContinue={() => setStep(8)}
         gradientColors={['#8273BF', '#003E75']}
+        continueColor="#405899"
         step={7}
         totalSteps={totalSteps}
-        continueColor="#405899"
       />
     ),
 
-    // STEP 8 (index 7): “Have you ever done Therapy”
     () => (
       <StepScreen
         title="Have you ever done Therapy"
         subtitle="This will be used to personalize your therapy"
         options={['Yes', 'No']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={everHadTherapy}
+        onSelect={setEverHadTherapy}
         onContinue={() => setStep(9)}
         gradientColors={['#FB5D83', '#0188FF']}
+        continueColor="#5F79D1"
         step={8}
         totalSteps={totalSteps}
-        continueColor="#5F79D1"
       />
     ),
 
-    // STEP 9 (index 8): Your second custom step (CustomStepEight)
     () => (
       <CustomStepEight
         step={9}
@@ -145,79 +152,78 @@ export default function Onboarding() {
       />
     ),
 
-    // STEP 10 (index 9): “Mental Health”
     () => (
       <StepScreen
         title="Mental Health"
         subtitle="Do you have any diagnosed mental health conditions?"
         options={['Depression', 'Anxiety', 'OCD', 'PTSD', 'Bipolar', 'Other']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={mentalHealth}
+        onSelect={setMentalHealth}
         onContinue={() => setStep(11)}
         gradientColors={['#E81B00', '#FF9D9D']}
+        continueColor="#F56458"
         step={10}
         totalSteps={totalSteps}
-        continueColor="#F56458"
       />
     ),
 
-    // STEP 11 (index 10): “Pressing Issues”
     () => (
       <StepScreen
         title="Pressing Issues"
         subtitle="Do you have any pressing issues, problems, or worries to work on?"
         options={['Stress', 'Relationship', 'School / Work', 'Friends', 'Trauma', 'Other']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={pressingIssues}
+        onSelect={setPressingIssues}
         onContinue={() => setStep(12)}
         gradientColors={['#C925D1', '#C9FFD8']}
+        continueColor="#C97FD4"
         step={11}
         totalSteps={totalSteps}
-        continueColor="#C97FD4"
       />
     ),
 
-    // STEP 12 (index 11): “What is your Goal”
     () => (
       <StepScreen
         title="What is your Goal"
         subtitle="Buddy will tailor your therapy to your personal goals"
         options={['Be Happier', 'Work through Trauma', 'Get over Breakup', 'Have someone to listen', 'Learn about yourself', 'Other']}
-        selected={selected}
-        onSelect={setSelected}
+        selected={goal}
+        onSelect={setGoal}
         onContinue={() => setStep(13)}
         gradientColors={['#80F061', '#00995C']}
+        continueColor="#3AC15E"
         step={12}
         totalSteps={totalSteps}
-        continueColor="#3AC15E"
       />
     ),
 
-
-    // STEP 13 (index 12): (placeholder for any final step)
     () => (
-      <CustomStep13 step={13} totalSteps={totalSteps} onContinue={() => setStep(14)}/>
-    ),
-    () => (
-      <CustomStep14 step={14} totalSteps={totalSteps} onContinue={() => setStep(15)}/>
-    ),
-    () => (
-      <FreeTrial onContinue={() => setStep(16)}/>
-    ),
-    () => (
-      <FreeTrialNotif onContinue={() => setStep(17)}/>
+      <CustomStep13
+        step={13}
+        totalSteps={totalSteps}
+        onContinue={() => setStep(14)}
+      />
     ),
 
     () => (
-      <SignUp/>
+      <CustomStep14
+        step={14}
+        totalSteps={totalSteps}
+        onContinue={() => setStep(15)}
+      />
     ),
 
+    () => (
+      <FreeTrial onContinue={() => setStep(16)} />
+    ),
 
+    () => (
+      <FreeTrialNotif onContinue={() => setStep(17)} />
+    ),
+
+    () => <SignUp />,
   ];
 
-  //
-  // 2) Safely pick which screen to render. If `step` is out of range, fall back to the last screen.
-  //
   const ScreenToRender = screens[step - 1] ?? screens[screens.length - 1];
 
   return (

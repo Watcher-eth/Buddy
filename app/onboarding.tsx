@@ -1,5 +1,5 @@
 // src/components/Onboarding.tsx
-import React, { useState } from 'react';
+import React, { JSX, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, { SlideInRight, SlideOutLeft, Layout } from 'react-native-reanimated';
 
@@ -148,7 +148,7 @@ export default function Onboarding() {
         step={9}
         totalSteps={totalSteps}
         onContinue={() => setStep(10)}
-        continueColor="#8273BF"
+        continueColor="#273723"
       />
     ),
 

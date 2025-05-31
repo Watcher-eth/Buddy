@@ -97,7 +97,7 @@ export const CustomStepEight: React.FC<{
       subtitle=""
       step={step}
       totalSteps={totalSteps}
-      gradientColors={['#E80054', '#0188FF']}
+      gradientColors={['#171717', '#273723']}
       onContinue={onContinue}
       continueLabel="Continue"
     >
@@ -177,12 +177,12 @@ export const CustomStep13: React.FC<{
       subtitle=""
       step={step}
       totalSteps={totalSteps}
-      gradientColors={['#FB5D83', '#0188FF']}
+      gradientColors={['#141414', '#202224']}
       onContinue={onContinue}
       continueLabel="Continue"
     >
       <View style={styles.inputContainer}>
-<ActivityRings values={[0.78, 0.6, 0.45]} />
+<ActivityRings values={[0.45, 0.6, 0.78]} />
 <Text style={styles2.title}>78% of Users report being happier with themselves 30 days after starting Buddy</Text>
 <Text style={styles.subtitle}>60% report feeling more secure & confident and 45% less anxious in their day to day</Text>
       </View>

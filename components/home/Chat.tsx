@@ -52,7 +52,7 @@ export default function ChatScreen({ visible, data, onClose }: Props) {
             ]}
           >
             {item.from === 'bot' && (
-              <Image source={require('../../assets/Bot.png')} style={styles.avatar} />
+              <Image source={require('../../assets/BuddyLogo.png')} style={styles.avatar} />
             )}
             <Text style={[styles.bubble, item.from === 'user' && styles.bubbleUser]}>
               {item.text}

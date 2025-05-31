@@ -7,8 +7,9 @@ import Animated, { SlideInRight, SlideOutLeft, Layout } from 'react-native-reani
 
 // The generic multiple‐choice step layout
 import { StepScreen } from '../components/onboarding/OnboardingStep';
-import { CustomStepEight, StepFourCustom } from '../components/onboarding/ExtraSteps'
+import { CustomStep13, CustomStep14, CustomStepEight, StepFourCustom } from '../components/onboarding/ExtraSteps'
 import SignIn from '../components/onboarding/SignIn'
+import { FreeTrial, FreeTrialNotif } from '../components/onboarding/SubscriptionSteps'
 
 // Your two custom steps:
 
@@ -38,6 +39,7 @@ export default function Onboarding() {
         onContinue={() => setStep(3)}
         gradientColors={['#FD7BEF', '#F9452C']}
         step={2}
+        continueColor="#FB5D83"
         totalSteps={totalSteps}
       />
     ),
@@ -53,6 +55,7 @@ export default function Onboarding() {
         onContinue={() => setStep(4)}
         gradientColors={['#FFB301', '#EE5623']}
         step={3}
+        continueColor="#F37019"
         totalSteps={totalSteps}
       />
     ),
@@ -69,6 +72,7 @@ export default function Onboarding() {
         onContinue={() => setStep(5)}
         gradientColors={['#00E13E', '#003E75']}
         step={4}
+        continueColor="#01845E"
         totalSteps={totalSteps}
       />
     ),
@@ -79,6 +83,7 @@ export default function Onboarding() {
         step={5}
         totalSteps={totalSteps}
         onContinue={() => setStep(6)}
+        continueColor="#4AABFF"
       />
     ),
 
@@ -94,6 +99,7 @@ export default function Onboarding() {
         gradientColors={['#FB5D83', '#FF7700']}
         step={6}
         totalSteps={totalSteps}
+        continueColor="#47A9FF"
       />
     ),
 
@@ -109,6 +115,7 @@ export default function Onboarding() {
         gradientColors={['#8273BF', '#003E75']}
         step={7}
         totalSteps={totalSteps}
+        continueColor="#405899"
       />
     ),
 
@@ -124,6 +131,7 @@ export default function Onboarding() {
         gradientColors={['#FB5D83', '#0188FF']}
         step={8}
         totalSteps={totalSteps}
+        continueColor="#5F79D1"
       />
     ),
 
@@ -133,6 +141,7 @@ export default function Onboarding() {
         step={9}
         totalSteps={totalSteps}
         onContinue={() => setStep(10)}
+        continueColor="#8273BF"
       />
     ),
 
@@ -148,6 +157,7 @@ export default function Onboarding() {
         gradientColors={['#E81B00', '#FF9D9D']}
         step={10}
         totalSteps={totalSteps}
+        continueColor="#F56458"
       />
     ),
 
@@ -163,6 +173,7 @@ export default function Onboarding() {
         gradientColors={['#C925D1', '#C9FFD8']}
         step={11}
         totalSteps={totalSteps}
+        continueColor="#C97FD4"
       />
     ),
 
@@ -178,23 +189,26 @@ export default function Onboarding() {
         gradientColors={['#8DCBFF', '#0088FF']}
         step={12}
         totalSteps={totalSteps}
+        continueColor="#3AC15E"
       />
     ),
 
+
     // STEP 13 (index 12): (placeholder for any final step)
     () => (
-      <StepScreen
-        title="All done!"
-        subtitle="Thank you for providing your information."
-        options={[]}
-        selected={selected}
-        onSelect={setSelected}
-        onContinue={() => {/* final action here */}}
-        gradientColors={['#00C8FF', '#00FF99']}
-        step={13}
-        totalSteps={totalSteps}
-      />
+      <CustomStep13 step={13} totalSteps={totalSteps} onContinue={() => setStep(14)}/>
     ),
+    () => (
+      <CustomStep14 step={14} totalSteps={totalSteps} onContinue={() => setStep(15)}/>
+    ),
+    () => (
+      <FreeTrial onContinue={() => setStep(16)}/>
+    ),
+    () => (
+      <FreeTrialNotif onContinue={() => setStep(17)}/>
+    ),
+
+
   ];
 
   //

@@ -10,6 +10,7 @@ interface StepScreenProps {
   subtitle?: string;
   options: string[];
   selected: string | null;
+  continueColor?: string;
   onSelect: (option: string) => void;
   onContinue: () => void;
   gradientColors: readonly [string, string, ...string[]];
@@ -22,6 +23,7 @@ export const StepScreen: React.FC<StepScreenProps> = ({
   subtitle,
   options,
   selected,
+  continueColor,
   onSelect,
   onContinue,
   gradientColors,
@@ -36,6 +38,7 @@ export const StepScreen: React.FC<StepScreenProps> = ({
       totalSteps={totalSteps}
       gradientColors={gradientColors}
       onContinue={onContinue}
+      continueColor={continueColor}
     >
       {/* FlatList of selectable options */}
       <FlatList

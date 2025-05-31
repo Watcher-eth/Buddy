@@ -14,6 +14,7 @@ import Animated, {
   useAnimatedProps,
   withTiming,
 } from 'react-native-reanimated';
+import { AnimatedPressable } from '../common/AnimatedPressable'
 
 const { width } = Dimensions.get('window');
 
@@ -29,6 +30,7 @@ interface StepLayoutProps {
   step: number;            // current step index (1-based)
   totalSteps: number;      // total number of steps
   gradientColors: readonly [string, string, ...string[]];
+  continueColor?: string
   onContinue: () => void;  // called when “Continue” is pressed
   continueLabel?: string;  // optional override for button text (default: “Continue”)
   children: React.ReactNode; // the “middle” content (FlatList of options, a form, etc.)
@@ -41,6 +43,7 @@ export const StepLayout: React.FC<StepLayoutProps> = ({
   totalSteps,
   gradientColors,
   onContinue,
+  continueColor,
   continueLabel = 'Continue',
   children,
 }) => {
@@ -114,9 +117,9 @@ export const StepLayout: React.FC<StepLayoutProps> = ({
 
       {/* Footer “Continue” button */}
       <View style={styles.footer}>
-        <Pressable style={styles.continueButton} onPress={onContinue}>
-          <Text style={styles.continueText}>{continueLabel}</Text>
-        </Pressable>
+        <AnimatedPressable style={styles.continueButton} onPress={onContinue}>
+          <Text style={[styles.continueText, { color: continueColor }]}>{continueLabel}</Text>
+        </AnimatedPressable>
       </View>
     </LinearGradient>
   );
@@ -165,7 +168,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   continueText: {
-    color: '#FF407B',
     fontSize: 19,
     fontWeight: '700',
   },

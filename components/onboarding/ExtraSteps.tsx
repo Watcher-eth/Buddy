@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Image, Text, Dimensions } from 'react-native';
 import { StepLayout } from './StepLayout';
-import { SessionCard } from './ExtraItems'
+import { RocketLaunchAnimation, SessionCard } from './ExtraItems'
 import { Checkbox } from '../common/Checkbox'
+import { ActivityRings } from '../reports/MoodScore'
+import TypewriterTextReanimated from '../common/TypewriteText'
 
 interface StepFourProps {
   step: number;
@@ -85,32 +87,6 @@ export const CustomStepEight: React.FC<{
   totalSteps: number;
   onContinue: () => void;
 }> = ({ step, totalSteps, onContinue }) => {
-  // Mock “breakup” data
-  const leftSession = {
-    sessionNumber: 1,
-    dateString: 'Tuesday, June 1st',
-    struggles: [
-      "Their message popped up, and my thoughts spiraled immediately.",
-      "Replaying our last conversation over and over.",
-      "I haven’t been eating much because I can’t focus on anything else.",
-    ],
-    observations: [
-     
-    ],
-  };
-
-  const rightSession = {
-    sessionNumber: 2,
-    dateString: 'Wednesday, June 8th',
-    struggles: [
-      "Keeps waking up in the middle of the night, feeling ache all over again.",
-      "Every time I drive by my mind floods with memories.",
-    ],
-    observations: [
-    
-    ],
-  };
-
   const goals = [
     'Letting Go with Kindness',
     'Try setting one tiny goal for the week',
@@ -159,6 +135,15 @@ const styles2 = StyleSheet.create({
   marginLeft: 10,
  },
 
+ title: {
+  fontSize: 24,
+  fontWeight: 'bold',
+  color: '#fff',
+  marginTop: 27,
+  textAlign: "center",
+  marginBottom: 10,
+ },
+
   goalsContainer: {
     width: '90%',
   },
@@ -176,3 +161,53 @@ const styles2 = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+
+
+export const CustomStep13: React.FC<{
+  step: number;
+  totalSteps: number;
+  onContinue: () => void;
+}> = ({ step, totalSteps, onContinue }) => {
+
+  return (
+    <StepLayout
+      title="Buddy helps you be happier & more secure"
+      subtitle=""
+      step={step}
+      totalSteps={totalSteps}
+      gradientColors={['#FB5D83', '#0188FF']}
+      onContinue={onContinue}
+      continueLabel="Continue"
+    >
+      <View style={styles.inputContainer}>
+<ActivityRings values={[0.78, 0.6, 0.45]} />
+<Text style={styles2.title}>78% of Users report being happier with themselves 30 days after starting Buddy</Text>
+<Text style={styles.subtitle}>60% report feeling more secure & confident and 45% less anxious in their day to day</Text>
+      </View>
+    </StepLayout>
+  );
+};
+
+
+export const CustomStep14: React.FC<{
+  step: number;
+  totalSteps: number;
+  onContinue: () => void;
+}> = ({ step, totalSteps, onContinue }) => {
+
+  return (
+    <StepLayout
+      title="Buddy is now creating a personal Therapy Plan"
+      subtitle="It will evolve and and adapt over time based on your sessions and memories"
+      step={step}
+      totalSteps={totalSteps}
+      gradientColors={['#FB5D83', '#0188FF']}
+      onContinue={onContinue}
+      continueLabel="Continue"
+    >
+      <View style={styles.inputContainer}>
+<RocketLaunchAnimation />
+<TypewriterTextReanimated strings={["Personalizing your experience", "Calibrating your Buddy", "Creating a safe space"]} /></View>    </StepLayout>
+  );
+};

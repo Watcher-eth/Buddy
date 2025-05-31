@@ -184,6 +184,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 32,
     fontWeight: '700',
+    fontFamily: 'SFPro-Bold',
   },
   date: {
     color: '#aaa',
@@ -213,6 +214,7 @@ const styles = StyleSheet.create({
   legendLabel: {
     color: '#fff',
     fontSize: 14,
+    fontFamily: 'SFPro-Bold',
   },
   dividerRow: {
     flexDirection: 'row',
@@ -257,6 +259,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     color: '#101010',
+    fontFamily: 'SFPro-Bold',
 
   },
   footer: {

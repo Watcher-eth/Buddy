@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     color: '#111',
+    fontFamily: 'SFPro-Bold',
   },
 
   // --- tabs ---
@@ -217,6 +218,7 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: 'SFPro-Bold',
   },
   tabTextActive: {
     color: '#111',
@@ -236,6 +238,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     color: '#555',
+    fontFamily: 'SFPro-Bold',
   },
   listContent: {
     paddingHorizontal: 16,

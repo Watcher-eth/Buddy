@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginBottom: 4,
     textAlign: 'center',
+    fontFamily: 'SFPro-Bold',
   },
   subtitle: {
     position: 'absolute',
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     color: 'white',
     opacity: 0.8,
     textAlign: 'center',
+    fontFamily: 'SFPro-Medium',
   },
   contentContainer: {
     flex: 1,
@@ -92,11 +94,13 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingVertical: 15,
     alignItems: 'center',
+    fontFamily: 'SFPro-Bold',
   },
   continueText: {
     color: '#01A8FF',
     fontSize: 19,
     fontWeight: '700',
+    fontFamily: 'SFPro-Bold',
   },
   disclaimer: {
     marginTop: -12,
@@ -104,7 +108,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     opacity: 0.7,
-    textAlign: "center"
+    textAlign: "center",
+    fontFamily: 'SFPro-Bold',
   }
 });
 
@@ -122,7 +127,7 @@ export const FreeTrial = ({onContinue}: {onContinue: () => void}) => {
       <Image source={require("../../assets/Phone.png")} style={{ width: width * 0.64, height: height * 0.45, marginBottom: 40, alignSelf:"center" }} />
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
        <SymbolView name="checkmark" size={23} tintColor="white" weight="bold" />
-        <Text style={{ fontSize: 23, color: 'white', fontWeight: '700', marginLeft: 4 }}> No Payment due now</Text>
+        <Text style={{ fontSize: 23, color: 'white', fontWeight: '700', marginLeft: 4, fontFamily: 'SFPro-Bold', }}> No Payment due now</Text>
       </View>
     </StepLayout>
   )
@@ -141,7 +146,7 @@ export const FreeTrialNotif = ({onContinue}: {onContinue: () => void}) => {
         <SymbolView name="bell.badge" size={220} tintColor="white" type='multicolor' animationSpec={{effect:{type: 'bounce'}, repeating: true}} style={{alignSelf:"center"}} />
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', display: 'flex', marginTop: 60 }}>
         <SymbolView name="checkmark" size={23} tintColor="white" weight="bold" />
-        <Text style={{ fontSize: 23, color: 'white', fontWeight: '700', marginLeft: 4 }}> No Payment due now</Text>
+        <Text style={{ fontSize: 23, color: 'white', fontWeight: '700', marginLeft: 4, fontFamily: 'SFPro-Bold', }}> No Payment due now</Text>
         </View>
       </StepLayout>
     )

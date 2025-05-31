@@ -59,18 +59,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 8,
+
   },
   title: {
     color: '#fefefe',
     fontSize: 21,
     fontWeight: '600',
     marginLeft: 8,
+    fontFamily: 'SFPro-Bold',
+
   },
   paragraph: {
     color: '#fefefe',
     fontSize: 18,
     fontWeight: '500',
     lineHeight: 26,
+    fontFamily: 'SFPro-Medium',
   },
   bulletRow: {
     flexDirection: 'row',
@@ -88,6 +92,8 @@ const styles = StyleSheet.create({
     color: '#fefefe',
     fontSize: 18,
     fontWeight: '500',
-    lineHeight: 26,
+    lineHeight: 26,    
+    fontFamily: 'SFPro-Bold',
+
   },
 })

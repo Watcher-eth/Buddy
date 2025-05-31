@@ -78,6 +78,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize:   19,
     fontWeight: '600',
-    color:      '#62BFF8',                 // match your light-blue text
+    color:      '#62BFF8',    
+    fontFamily: 'SFPro-Bold',
+    // match your light-blue text
   },
 });

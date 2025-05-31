@@ -154,5 +154,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: SIZE / 8,
     fontWeight: "700",
+    fontFamily: 'SFPro-Bold',
+
   },
 });

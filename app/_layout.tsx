@@ -16,7 +16,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   // 1) Load custom fonts
   const [fontsLoaded, fontError] = useFonts({
-    SFPro:          require('../assets/fonts/SFProRounded-Regular.ttf'),
+    'SFPro':          require('../assets/fonts/SFProRounded-Regular.ttf'),
     'SFPro-Medium': require('../assets/fonts/SFProRounded-Medium.ttf'),
     'SFPro-Bold':   require('../assets/fonts/SFProRounded-Bold.ttf'),
   });

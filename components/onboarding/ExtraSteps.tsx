@@ -59,7 +59,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginTop: 20,
-    marginBottom: 10
+    marginBottom: 10,
+    fontFamily: 'SFPro-Bold',
+
   },
   subtitle: {
     fontSize: 15,
@@ -67,26 +69,18 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     textAlign: 'center',
     fontWeight: '500',
+    fontFamily: 'SFPro-Medium',
   },
 });
 
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
-
-// Make this smaller if you want a shorter card
-const CARD_BASE_WIDTH = SCREEN_WIDTH * 0.8; 
-// This is the visible “height” window for the large card.
-const CARD_VISIBLE_HEIGHT = CARD_BASE_WIDTH * 1.1; 
-
-// Scale factor for the smaller (right) card
-const SMALL_SCALE = 0.55;                 
 
 export const CustomStepEight: React.FC<{
   step: number;
   totalSteps: number;
+  continueColor?: string
   onContinue: () => void;
-}> = ({ step, totalSteps, onContinue }) => {
+}> = ({ step, totalSteps, onContinue, continueColor }) => {
   const goals = [
     'Letting Go with Kindness',
     'Try setting one tiny goal for the week',
@@ -95,7 +89,8 @@ export const CustomStepEight: React.FC<{
 
   return (
     <StepLayout
-      title="Buddy creates custom Reports and Objectives after Sessions"
+      continueColor={continueColor}
+      title="Buddy creates custom Reports and Objectives after each Session"
       subtitle=""
       step={step}
       totalSteps={totalSteps}
@@ -142,6 +137,7 @@ const styles2 = StyleSheet.create({
   marginTop: 27,
   textAlign: "center",
   marginBottom: 10,
+  fontFamily: 'SFPro-Bold',
  },
 
   goalsContainer: {
@@ -167,11 +163,13 @@ const styles2 = StyleSheet.create({
 export const CustomStep13: React.FC<{
   step: number;
   totalSteps: number;
+  continueColor?: string
   onContinue: () => void;
-}> = ({ step, totalSteps, onContinue }) => {
+}> = ({ step, totalSteps, onContinue, continueColor }) => {
 
   return (
     <StepLayout
+      continueColor={continueColor}
       title="Buddy helps you be happier & more secure"
       subtitle=""
       step={step}
@@ -193,16 +191,18 @@ export const CustomStep13: React.FC<{
 export const CustomStep14: React.FC<{
   step: number;
   totalSteps: number;
+  continueColor?: string
   onContinue: () => void;
-}> = ({ step, totalSteps, onContinue }) => {
+}> = ({ step, totalSteps, onContinue, continueColor }) => {
 
   return (
     <StepLayout
+      continueColor={continueColor}
       title="Buddy is now creating a personal Therapy Plan"
       subtitle="It will evolve and and adapt over time based on your sessions and memories"
       step={step}
       totalSteps={totalSteps}
-      gradientColors={['#FB5D83', '#0188FF']}
+      gradientColors={['#FFB301', '#EE5623']}
       onContinue={onContinue}
       continueLabel="Continue"
     >

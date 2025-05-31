@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 23,
     fontWeight: '600',
+    fontFamily: 'SFPro-Bold',
+
   },
   optionTextSelected: {
     fontWeight: 'bold',

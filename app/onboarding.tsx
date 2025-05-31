@@ -186,7 +186,7 @@ export default function Onboarding() {
         selected={selected}
         onSelect={setSelected}
         onContinue={() => setStep(13)}
-        gradientColors={['#8DCBFF', '#0088FF']}
+        gradientColors={['#80F061', '#00995C']}
         step={12}
         totalSteps={totalSteps}
         continueColor="#3AC15E"

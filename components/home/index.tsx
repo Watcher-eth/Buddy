@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 20,
   },
   prompt: {
-    marginTop: 24, textAlign: 'center', fontSize: 34, fontWeight: '600',
+    marginTop: 24, textAlign: 'center', fontSize: 34, fontWeight: '600',     fontFamily: 'SFPro-Bold',
   },
   bottomBar: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', padding: 24,

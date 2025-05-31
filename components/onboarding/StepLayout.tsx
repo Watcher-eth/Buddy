@@ -146,11 +146,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: 'white',
     marginBottom: 4,
+    fontFamily: 'SFPro-Bold',
   },
   subtitle: {
     fontSize: 18,
     fontWeight: '500',
     color: 'white',
+    fontFamily: 'SFPro-Medium',
   },
   contentContainer: {
     flex: 1,
@@ -166,6 +168,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingVertical: 15,
     alignItems: 'center',
+    fontFamily: 'SFPro-Bold',
+
   },
   continueText: {
     fontSize: 19,

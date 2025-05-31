@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     maxWidth: '75%',
     fontSize: 17,
     fontWeight: '700',
+    fontFamily: 'SFPro-Bold',
     color: '#181818',
   },
   bubbleUser: {
@@ -148,6 +149,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: '#f0f0f0',
     fontSize: 16,
+    fontFamily: 'SFPro-Bold',
     // shadow for iOS
   },
   sendButton: {
